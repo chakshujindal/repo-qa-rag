@@ -1,0 +1,31 @@
+# Environment and secrets
+.env
+.venv/
+
+# Python caches and build output
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Coverage output
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
+# Local index, clone cache and vector DB files
+.repoqa/
+*.sqlite3
+
+# Frontend tooling (none today, kept for safety)
+node_modules/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/

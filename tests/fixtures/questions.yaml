@@ -1,0 +1,35 @@
+# Retrieval eval for the bookshop fixture. Run: repoqa eval tests/fixtures/questions.yaml
+# A question "hits" when a retrieved chunk has the expected path (and symbol, if given).
+repo: sample_repo
+k: 5
+questions:
+  - question: How are user passwords hashed before being stored?
+    expected: [{path: bookshop/auth.py, symbol: hash_password}]
+  - question: How is a login session token signed so it can't be forged?
+    expected: [{path: bookshop/auth.py, symbol: issue_token}]
+  - question: What stops customers from buying more copies than the warehouse has?
+    expected: [{path: bookshop/inventory.py, symbol: reserve_stock}]
+  - question: Which books are running low and need reordering?
+    expected: [{path: bookshop/inventory.py, symbol: low_stock_report}]
+  - question: How is a discount code applied at checkout?
+    expected: [{path: bookshop/cart.py, symbol: apply_coupon}]
+  - question: What happens when the card processor times out?
+    expected: [{path: bookshop/payments.py, symbol: PaymentGateway}]
+  - question: How do we give a customer their money back?
+    expected: [{path: bookshop/payments.py, symbol: PaymentGateway}]
+  - question: What does the order confirmation email contain?
+    expected:
+      - {path: bookshop/notifications.py, symbol: send_order_confirmation}
+      - {path: bookshop/notifications.py}
+  - question: What are the steps of checkout when an order is placed?
+    expected: [{path: bookshop/orders.py, symbol: place_order}]
+  - question: Can an order be cancelled after it has shipped?
+    expected: [{path: bookshop/orders.py, symbol: cancel_order}]
+  - question: How do I deploy the service to production?
+    expected: [{path: docs/deployment.md}]
+  - question: Which environment variables configure the shop?
+    expected: [{path: bookshop/settings.py, symbol: load_settings}]
+  - question: How are prices displayed in the browser?
+    expected: [{path: web/app.js}]
+  - question: How do I undo a bad release?
+    expected: [{path: docs/deployment.md}]
